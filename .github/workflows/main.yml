@@ -23,6 +23,7 @@ jobs:
         run: |
           echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> .env
           echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+          echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}" >> .env
           echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
           echo "JWT_EXPIRATION=${{ vars.JWT_EXPIRATION }}" >> .env
           echo "JWT_REFRESH_EXPIRATION=${{ vars.JWT_REFRESH_EXPIRATION }}" >> .env

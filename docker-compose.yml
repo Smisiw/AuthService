@@ -16,6 +16,7 @@ services:
 
   auth-service:
     build: .
+    image: ${DOCKER_USERNAME}/auth_service
     container_name: auth_service_container
     depends_on:
       - db
