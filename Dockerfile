@@ -1,11 +1,6 @@
 FROM eclipse-temurin:17-jdk
 WORKDIR /app
 COPY . .
+RUN chmod +x gradlew
 RUN ./gradlew build --no-daemon
-ENV SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/auth_db
-ENV SPRING_DATASOURCE_USERNAME=${DB_USERNAME}
-ENV SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
-ENV JWT_SECRET=${JWT_SECRET}
-ENV JWT_EXPIRATION=${JWT_EXPIRATION}
-ENV JWT_REFRESH_EXPIRATION=${JWT_REFRESH_EXPIRATION}
 CMD ["java", "-jar", "build/libs/auth_service-1.jar"]
