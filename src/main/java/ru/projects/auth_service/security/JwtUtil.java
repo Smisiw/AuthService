@@ -20,9 +20,10 @@ public class JwtUtil {
     private long expirationTime;
 
     public String generateToken(Authentication authentication) {
-        UserDetails userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
+                .claim("userId", userDetails.getId())
                 .claim("authorities", userDetails.getAuthorities())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expirationTime))

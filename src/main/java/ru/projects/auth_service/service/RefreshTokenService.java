@@ -3,7 +3,6 @@ package ru.projects.auth_service.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.projects.auth_service.model.RefreshToken;
@@ -25,8 +24,8 @@ public class RefreshTokenService {
     private long refreshTokenExpiration;
 
     public RefreshToken createRefreshToken(Authentication authentication) {
-        UserDetails userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        User user = userRepository.findByUsername(userDetails.getUsername())
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findByEmail(userDetails.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         RefreshToken refreshToken = new RefreshToken();
