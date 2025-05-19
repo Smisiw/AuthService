@@ -12,9 +12,9 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    password: ${DB_PASSWORD:secret}
+    password: ${DB_PASSWORD:password}
     driver-class-name: org.postgresql.Driver
-    username: ${DB_USERNAME:admin}
+    username: ${DB_USERNAME:user}
     url: ${DB_URL:jdbc:postgresql://localhost:5433/auth_db}
 
   sql:
@@ -22,7 +22,7 @@ spring:
       mode: always
       data-locations: classpath:data.sql
 jwt:
-  secret: ${JWT_SECRET:"nTDmGYqtvLfDCptgzwG+xKGtXV/JHL4fHKJrxK9tHdI="}
+  secret: ${JWT_SECRET:nTDmGYqtvLfDCptgzwG+xKGtXV/JHL4fHKJrxK9tHdI=}
   refresh:
     expiration: ${JWT_REFRESH_EXPIRATION:604800000}
   expiration: ${JWT_EXPIRATION:86400000}
@@ -31,7 +31,6 @@ management:
     web:
       exposure:
         include: health
-      base-path: /auth
   endpoint:
     health:
       show-details: always
