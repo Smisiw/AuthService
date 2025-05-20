@@ -30,10 +30,17 @@ management:
   endpoints:
     web:
       exposure:
-        include: health
+        include: health, info
   endpoint:
     health:
       show-details: always
+  health:
+    defaults:
+      enabled: true
+    diskspace:
+      enabled: true
+    db:
+      enabled: true
 eureka:
   client:
     service-url:
