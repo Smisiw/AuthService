@@ -9,11 +9,12 @@ import ru.projects.auth_service.model.User;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class UserDetailsImpl implements UserDetails {
     @Getter
-    private final Long id;
+    private final UUID id;
     private final String email;
     private final String password;
     private final List<GrantedAuthority> authorities;
