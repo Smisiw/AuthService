@@ -1,8 +1,18 @@
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 CREATE TABLE IF NOT EXISTS roles (
-                                     id          uuid PRIMARY KEY default gen_random_uuid(),
-                                     "name" VARCHAR(50) UNIQUE NOT NULL
+    id uuid PRIMARY KEY default gen_random_uuid(),
+    name VARCHAR(50) UNIQUE NOT NULL
     );
+CREATE TABLE IF NOT EXISTS users (
+    id uuid PRIMARY KEY default gen_random_uuid(),
+    password text NOT NULL,
+    email varchar(50) unique not null
+);
+
+CREATE TABLE IF NOT EXISTS user_roles (
+    user_id uuid references users,
+    role_id uuid references roles
+);
 
 INSERT INTO roles VALUES ('d7fbaa51-d73c-4e4f-8bd1-a6a727a67dbe','ROLE_USER'), ('94262bc5-184e-40a6-8990-d9811439739b','ROLE_SELLER'), ('a2f627ab-f6f5-4b80-90ad-531916f2ca6b','ROLE_ADMIN')
     ON CONFLICT DO NOTHING;
