@@ -17,10 +17,6 @@ spring:
     username: ${DB_USERNAME:user}
     url: ${DB_URL:jdbc:postgresql://localhost:5433/auth_db}
 
-  sql:
-    init:
-      mode: always
-      data-locations: classpath:data.sql
 jwt:
   secret: ${JWT_SECRET:nTDmGYqtvLfDCptgzwG+xKGtXV/JHL4fHKJrxK9tHdI=}
   refresh:
